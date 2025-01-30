@@ -49,7 +49,10 @@ class _ContactListPageState extends State<ContactListPage> {
             onPressed: () {
               Navigator.of(ctx).pop();
             },
-            child: Icon(Icons.cancel,color: Colors.green,),
+            child: Icon(
+              Icons.cancel,
+              color: Colors.green,
+            ),
           ),
           TextButton(
               onPressed: () {
@@ -58,8 +61,10 @@ class _ContactListPageState extends State<ContactListPage> {
                 });
                 Navigator.of(ctx).pop();
               },
-              child: Icon(Icons.delete,color: Colors.red,)
-          ),
+              child: Icon(
+                Icons.delete,
+                color: Colors.red,
+              )),
         ],
       ),
     );
