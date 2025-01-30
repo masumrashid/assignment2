@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ContactListApp());
+  runApp(MyApp());
 }
 
-class ContactListApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,7 +74,10 @@ class _ContactListPageState extends State<ContactListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contact List"),
+        title: Text(
+          "Contact List",
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.teal,
       ),
       body: Padding(
@@ -83,19 +86,40 @@ class _ContactListPageState extends State<ContactListPage> {
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: "Name"),
+              decoration: InputDecoration(
+                labelText: "Name",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+              ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextField(
               controller: numberController,
-              decoration: InputDecoration(labelText: "Number"),
+              decoration: InputDecoration(
+                labelText: "Number",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(5)),
+              ),
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: addContact,
-              child: Text("Add"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: addContact,
+                child: Text(
+                  "Add",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  backgroundColor: Colors.teal,
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -106,8 +130,14 @@ class _ContactListPageState extends State<ContactListPage> {
                   return GestureDetector(
                     onLongPress: () => confirmDelete(index),
                     child: ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text(contacts[index]['name'] ?? ''),
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.brown,
+                      ),
+                      title: Text(
+                        contacts[index]['name'] ?? '',
+                        style: TextStyle(color: Colors.red),
+                      ),
                       subtitle: Text(contacts[index]['number'] ?? ''),
                       trailing: Icon(Icons.call, color: Colors.blue),
                     ),
