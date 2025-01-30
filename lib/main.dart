@@ -131,17 +131,23 @@ class _ContactListPageState extends State<ContactListPage> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onLongPress: () => confirmDelete(index),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.person,
-                        color: Colors.brown,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                      child: Container(
+                        color: Colors.grey.shade200,
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.person,
+                            color: Colors.brown,
+                          ),
+                          title: Text(
+                            contacts[index]['name'] ?? '',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          subtitle: Text(contacts[index]['number'] ?? ''),
+                          trailing: Icon(Icons.call, color: Colors.blue),
+                        ),
                       ),
-                      title: Text(
-                        contacts[index]['name'] ?? '',
-                        style: TextStyle(color: Colors.red),
-                      ),
-                      subtitle: Text(contacts[index]['number'] ?? ''),
-                      trailing: Icon(Icons.call, color: Colors.blue),
                     ),
                   );
                 },
