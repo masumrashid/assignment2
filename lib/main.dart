@@ -78,7 +78,7 @@ class _ContactListPageState extends State<ContactListPage> {
           "Contact List",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blueGrey,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -118,7 +118,7 @@ class _ContactListPageState extends State<ContactListPage> {
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Colors.blueGrey,
                 ),
               ),
             ),
