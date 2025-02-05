@@ -28,36 +28,38 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text('Add Employe'),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: TextFormField(
-              controller: name,
-              decoration: InputDecoration(labelText: "Name", hintText: "Name"),
+      body: Form(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                controller: name,
+                decoration: InputDecoration(labelText: "Name", hintText: "Name"),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: TextFormField(
-              controller: age,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Age", hintText: "Age"),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                controller: age,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: "Age", hintText: "Age"),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: TextFormField(
-              controller: salary,
-              keyboardType: TextInputType.number,
-              decoration:
-                  InputDecoration(labelText: "Salary", hintText: "Salary"),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                controller: salary,
+                keyboardType: TextInputType.number,
+                decoration:
+                    InputDecoration(labelText: "Salary", hintText: "Salary"),
+              ),
             ),
-          ),
-          Center(
-              child:
-                  ElevatedButton(onPressed: () {}, child: Text("Add Employee")))
-        ],
+            Center(
+                child:
+                    ElevatedButton(onPressed: () {}, child: Text("Add Employee")))
+          ],
+        ),
       ),
     );
   }
