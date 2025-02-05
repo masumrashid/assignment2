@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
               child: TextFormField(
                 controller: salary,
                 keyboardType: TextInputType.number,
