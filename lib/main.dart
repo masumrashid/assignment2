@@ -33,14 +33,14 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextFormField(
                 controller: name,
                 decoration: InputDecoration(labelText: "Name", hintText: "Name"),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: TextFormField(
                 controller: age,
                 keyboardType: TextInputType.number,
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: TextFormField(
                 controller: salary,
                 keyboardType: TextInputType.number,
