@@ -1,161 +1,83 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ContactListPage(),
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: const AddEmployeeScreen(),
     );
   }
 }
 
-class ContactListPage extends StatefulWidget {
-  @override
-  _ContactListPageState createState() => _ContactListPageState();
-}
-
-class _ContactListPageState extends State<ContactListPage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController numberController = TextEditingController();
-
-  List<Map<String, String>> contacts = [];
-
-  void addContact() {
-    final name = nameController.text.trim();
-    final number = numberController.text.trim();
-
-    if (name.isNotEmpty && number.isNotEmpty) {
-      setState(() {
-        contacts.add({'name': name, 'number': number});
-      });
-      nameController.clear();
-      numberController.clear();
-    }
-  }
-
-  void confirmDelete(int index) {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text("Confirmation"),
-        content: Text("Are You Sure For Delete"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(ctx).pop();
-            },
-            child: Icon(
-              Icons.cancel,
-              color: Colors.green,
-            ),
-          ),
-          TextButton(
-              onPressed: () {
-                setState(() {
-                  contacts.removeAt(index);
-                });
-                Navigator.of(ctx).pop();
-              },
-              child: Icon(
-                Icons.delete,
-                color: Colors.red,
-              )),
-        ],
-      ),
-    );
-  }
+class AddEmployeeScreen extends StatelessWidget {
+  const AddEmployeeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
+        title: const Text('Add Employee'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
-        title: Text(
-          "Contact List",
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.blueGrey,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: "Name",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(5)),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            TextField(
-              controller: numberController,
-              decoration: InputDecoration(
-                labelText: "Number",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(5)),
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
+            const TextFieldWithLabel(label: "Name"),
+            const SizedBox(height: 16),
+            const TextFieldWithLabel(label: "Age"),
+            const SizedBox(height: 16),
+            const TextFieldWithLabel(label: "Salary"),
+            const SizedBox(height: 32),
+            Center(
               child: ElevatedButton(
-                onPressed: addContact,
-                child: Text(
-                  "Add",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  backgroundColor: Colors.blueGrey,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: contacts.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onLongPress: () => confirmDelete(index),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
-                      child: Container(
-                        color: Colors.grey.shade200,
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.person,
-                            color: Colors.brown,
-                          ),
-                          title: Text(
-                            contacts[index]['name'] ?? '',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                          subtitle: Text(contacts[index]['number'] ?? ''),
-                          trailing: Icon(Icons.call, color: Colors.blue),
-                        ),
-                      ),
-                    ),
-                  );
+                onPressed: () {
+                  // Add your action here
                 },
+                child: const Text('Add Employee'),
               ),
             ),
           ],
         ),
       ),
+      backgroundColor: const Color(0xFFF9F0FF), // Light pinkish background
+    );
+  }
+}
+
+class TextFieldWithLabel extends StatelessWidget {
+  final String label;
+
+  const TextFieldWithLabel({Key? key, required this.label}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: 4),
+        TextFormField(
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          ),
+        ),
+      ],
     );
   }
 }
