@@ -58,7 +58,7 @@ class Home extends StatelessWidget {
             ),
             Center(
                 child:
-                    ElevatedButton(onPressed: () {}, child: Text("Add Employee")))
+                    ElevatedButton(onPressed: () {}, child: Text("Add Employe")))
           ],
         ),
       ),
