@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.purple),
       home: const AddEmployeeScreen(),
     );
   }
@@ -23,8 +22,12 @@ class AddEmployeeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF8E9FF),
       appBar: AppBar(
-        title: const Text('Add Employee'),
+        title: const Text(
+          'Add Employee',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -34,24 +37,33 @@ class AddEmployeeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFieldWithLabel(label: "Name"),
+            const TextFieldWithLabel(label: 'Name'),
             const SizedBox(height: 16),
-            const TextFieldWithLabel(label: "Age"),
+            const TextFieldWithLabel(label: 'Age'),
             const SizedBox(height: 16),
-            const TextFieldWithLabel(label: "Salary"),
+            const TextFieldWithLabel(label: 'Salary'),
             const SizedBox(height: 32),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   // Add your action here
                 },
-                child: const Text('Add Employee'),
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFFE3CFFF),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: const Text(
+                  'Add Employee',
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ),
           ],
         ),
       ),
-      backgroundColor: const Color(0xFFF9F0FF), // Light pinkish background
     );
   }
 }
@@ -68,13 +80,16 @@ class TextFieldWithLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 16, color: Colors.black54),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
         TextFormField(
           decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
           ),
         ),
       ],
